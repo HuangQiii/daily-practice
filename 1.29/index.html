@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<ul id="ul-one" class="uls">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<ul id="ul-two" class="uls">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<script>
+		console.log("Static? : ");
+		var ulOne = document.getElementById("ul-one");
+		var ulOneLis = ulOne.getElementsByTagName("li");
+		console.log("before,getElementById: " + ulOneLis.length);
+		for(var i = 0;i < 5;i++){
+			ulOne.appendChild(document.createElement('li'));
+		};
+		console.log("after,getElementById: " + ulOneLis.length);
+
+		var ulTwo = document.querySelector("#ul-two");
+		var ulTwoLis = ulTwo.querySelectorAll("li");
+		console.log("before,querySelector: " + ulTwoLis.length);
+		for(var i = 0;i < 5;i++){
+			ulTwo.appendChild(document.createElement('li'));
+		};
+		console.log("after,querySelector: " + ulTwoLis.length);
+
+		console.log("Time : ");
+		console.time('querySelector');
+		for (var i = 0; i < 100000; i++) {
+		  document.querySelector("#ul-one");
+		}
+		console.timeEnd('querySelector');
+		console.time('getElementById');
+		for (var i = 0; i < 100000; i++) {
+		  document.getElementById("ul-one");
+		}
+		console.timeEnd('getElementById');
+
+		console.time('querySelectorAll');
+		for (var i = 0; i < 10000; i++) {
+		  document.querySelectorAll('.uls');
+		}
+		console.timeEnd('querySelectorAll');
+
+		console.time('getElementsByClassName');
+		for (var i = 0; i < 10000; i++) {
+		  document.getElementsByClassName("uls");
+		}
+		console.timeEnd('getElementsByClassName');
+	</script>
+</body>
+</html>

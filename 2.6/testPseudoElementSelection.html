@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		::-moz-selection { 
+		  color: gold;
+		  background: red;
+		}
+		::selection { 
+		  color: gold;
+		  background: red;
+		}
+
+		/* 将选中文本渲染成黑色背景白色前景 */
+		p::-moz-selection {
+		  color: white;
+		  background: black;
+		}
+		p::selection {
+		  color: white;
+		  background: black;
+		}
+	</style>
+</head>
+<body>
+	<div>提供::selection 伪元素选择器测试的文本</div>
+	<p>也尝试选中在这个p标签中的文本</p>
+</body>
+</html>

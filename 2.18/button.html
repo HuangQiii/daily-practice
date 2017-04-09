@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		html {
+				padding-top: 50px;
+				font-family: 'Open Sans', Helvetica, arial, sans-serif;
+				text-align: center;
+				background-color: #eeeeee;
+			}
+			
+			html *,
+			html *:before,
+			html *:after {
+				box-sizing: border-box;
+				-webkit-transition: 0.5s;
+				transition: 0.5s;
+			}
+			
+			html i,
+			html em,
+			html b,
+			html strong,
+			html span {
+				-webkit-transition: none;
+				transition: none;
+			}
+			
+			*:before,
+			*:after {
+				z-index: -1;
+			}
+			
+			h1,
+			h4 {
+				font-family: 'Raleway', 'Open Sans', sans-serif;
+				margin: 0;
+				line-height: 1;
+			}
+			
+			a {
+				text-decoration: none;
+				line-height: 80px;
+				color: black;
+			}
+			
+			.centerer {
+				width: 100%;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			
+			.wrap {
+				width: 50%;
+				float: left;
+			}
+
+
+			[class^="btn-"] {
+				position: relative;
+				display: block;
+				margin: 20px auto;
+				width: 100%;
+				height: 80px;
+				max-width: 250px;
+				text-transform: uppercase;
+				overflow: hidden;
+				border: 1px solid currentColor;
+			}
+
+			.btn-0{
+				color:#925073;
+			}
+			.btn-0:before{
+				content:"";
+				position: absolute;
+				top:0;
+				left:0;
+				width: 0;
+				height:80px;
+				background-color:#4c1d36;
+			}
+			.btn-0:hover{
+				color:#dfccd6;
+			}
+			.btn-0:hover:before{
+				width: 250px;
+			}
+
+
+			.btn-1 {
+				color: #af4e49;
+			}
+			
+			.btn-1:after {
+				content: '';
+				width: 0;
+				height: 0;
+				/*-webkit-transform: rotate(360deg);*/
+				border-style: solid;
+				border-width: 0 0 0 0;
+				border-color: #611c19 transparent transparent transparent;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			
+			.btn-1:hover {
+				color: #e8cbca;
+			}
+			
+			.btn-1:hover:after {
+				border-width: 330px 330px 0 0;
+			}
+
+			#div1{
+				width: 50px;
+				height:50px;
+				background-color:red;
+				border-style: solid;
+				border-width: 5px 5px 5px 0;
+				border-color: #611c19 blue yellow green;
+			}
+
+			.btn-1-2 {
+				color: #61cdbe;
+			}
+			
+			.btn-1-2:before {
+				content: '';
+				width: 0;
+				height: 0;
+				-webkit-transform: rotate(360deg);
+				border-style: solid;
+				border-width: 0 0 0 0;
+				border-color: transparent transparent transparent #29766b;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+			
+			.btn-1-2:after {
+				content: '';
+				width: 0;
+				height: 0;
+				-webkit-transform: rotate(360deg);
+				border-style: solid;
+				border-width: 0 0 0 0;
+				border-color: transparent transparent #29766b transparent;
+				position: absolute;
+				right: 0;
+				bottom: 0;
+			}
+			
+			.btn-1-2:hover {
+				color: #d1f0ec;
+			}
+			
+			.btn-1-2:hover:before {
+				border-width: 206.25px 0 0 206.25px;
+			}
+			
+			.btn-1-2:hover:after {
+				border-width: 0 0 206.25px 206.25px;
+			}
+
+			#div2{
+				width: 50px;
+				height:50px;
+				background-color:red;
+				border-style: solid;
+				border-width: 5px 0 0 5px;
+				border-color: transparent transparent transparent #29766b;
+			}
+	</style>
+</head>
+<body>
+	<div class="centerer">
+			<h1>Just Some More</h1>
+			<div id="div1"></div>
+			<div id="div2"></div>
+			<h1>Button Hover Effects</h1>
+			<h4>By: <a href="http://kylebrumm.com">Kyle Brumm</a></h4>
+
+			<div class="wrap">
+				<a class="btn-0" href="#">Swipe</a>
+				<a class="btn-1" href="#">Diagonal Swipe</a>
+				<a class="btn-1-2" href="#">Double Swipe</a>
+				<a class="btn-2" href="#">Diagonal Close</a>
+				<a class="btn-3" href="#"><span>Zoning In</span></a>
+				<a class="btn-4" href="#"><span>4 Corners</span></a>
+				<a class="btn-5" href="#">Slice</a>
+			</div>
+			<div class="wrap">
+				<a class="btn-6" href="#">Position Aware<span></span></a>
+				<a class="btn-7" href="#"><span>Alternate</span></a>
+				<a class="btn-8" href="#">Smoosh</a>
+				<a class="btn-9" href="#"><span>Vertical Overlap</span></a>
+				<a class="btn-10" href="#"><span>Horizontal Overlap</span></a>
+				<a class="btn-11" href="#">Collision</a>
+			</div>
+		</div>
+</body>
+</html>

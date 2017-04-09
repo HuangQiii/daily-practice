@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		body{
+			background: #fab614;
+			font-family: '微软雅黑';
+			font-size: 16px;
+			position: relative;
+			top: 0px;
+			left: 0px;
+			bottom: 0px;
+			right: 0px;
+		}
+		.item {
+			width: 100px;
+			height: 100px;
+			line-height: 30px;
+			border: 1px solid #eeeeee;
+		}
+	</style>
+</head>
+<body>
+	<div id="container" style="height:520px;"> 
+  	</div> 
+  	<button id="input">点击生成</button>
+
+  	<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  	<script>
+  		(function ($) {
+  			var container;
+
+  			var colors = ['#96C2F1', '#BBE1F1', '#E3E197', '#F8B3D0', '#FFCC00'];
+
+  			var create = function(text){
+  				var color = colors[parseInt(Math.random() * 5, 10)];
+  				$('<div class="item"><p>'+ text +'</p><a href="#">关闭</a></div>').css({ 'background': color }).appendTo(container).drag();
+  			};
+
+  			$.fn.drag = function(){
+		  		var $this = $(this);
+		        var parent = $this.parent();
+				
+		        var pw = parent.width();
+		        var ph = parent.height();
+		        //console.log(pw,ph);
+		        var thisWidth = $this.width() + parseInt($this.css('padding-left'), 10) + parseInt($this.css('padding-right'), 10);
+		        var thisHeight = $this.height() + parseInt($this.css('padding-top'), 10) + parseInt($this.css('padding-bottom'), 10);
+
+		        var x, y, positionX, positionY;
+		        var isDown = false; 
+
+		        var randY = parseInt(Math.random() * (ph - thisHeight), 10);
+		        var randX = parseInt(Math.random() * (pw - thisWidth), 10);
+
+
+		        parent.css({
+		            "position": "relative",
+		            "overflow": "hidden"
+		        });
+				
+		        $this.css({
+		            "cursor": "move",
+		            "position": "absolute"
+		        }).css({
+		            top: randY,
+		            left: randX
+		        }).mousedown(function (e) {
+		            parent.children().css({
+		                "zIndex": "0"
+		            });
+		            $this.css({
+		                "zIndex": "1"
+		            });
+		            isDown = true;
+		            x = e.pageX;
+		            y = e.pageY;
+		            positionX = $this.position().left;
+		            positionY = $this.position().top;
+		            // return false;
+		        });
+				
+				
+		        $(document).mouseup(function (e) {
+		            isDown = false;
+		        }).mousemove(function (e) {
+		            var xPage = e.pageX;
+		            var moveX = positionX + xPage - x;
+
+		            var yPage = e.pageY;
+		            var moveY = positionY + yPage - y;
+
+		            if (isDown == true) {
+		                $this.css({
+		                    "left": moveX,
+		                    "top": moveY
+		                });
+		            } else {
+		                return;
+		            }
+		            if (moveX < 0) {
+		                $this.css({
+		                    "left": "0"
+		                });
+		            }
+		            if (moveX > (pw - thisWidth)) {
+		                $this.css({
+		                    "left": pw - thisWidth
+		                });
+		            }
+		            if (moveY < 0) {
+		                $this.css({
+		                    "top": "0"
+		                });
+		            }
+		            if (moveY > (ph - thisHeight)) {
+		                $this.css({
+		                    "top": ph - thisHeight
+		                });
+		            }
+		        });
+  			};
+
+  			var init = function(){
+  				container = $('#container');
+
+  				container.on('click','a',function () {
+					$(this).parent().remove();
+				});
+
+  				$('#input').click(function (e) {
+					create('');
+				});
+  			};
+
+  			$(function() {
+				init();
+			});
+  		})(jQuery);
+  	</script>
+</body>
+</html>
